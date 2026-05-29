@@ -1,0 +1,380 @@
+/* Typography Import for beautiful scannability */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.webflow-hero-container {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  padding: 40px 0;
+}
+
+/* --- THE HERO LAYOUT SECTION --- */
+.webflow-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  min-height: 70vh;
+  padding-bottom: 100px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 255, 204, 0.06);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  color: #00ffcc;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ffcc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse-glow 2s infinite;
+}
+
+.webflow-title {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00ffcc 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.webflow-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.webflow-bio {
+  font-size: 17px;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* --- WEBFLOW BUTTON ANIMATIONS --- */
+.webflow-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.wf-btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #0b0f19;
+}
+.btn-primary:hover {
+  background-color: #00ffcc;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 255, 204, 0.2);
+}
+
+.btn-secondary {
+  background-color: #1e293b;
+  color: #ffffff;
+  border: 1px solid #334155;
+}
+.btn-secondary:hover {
+  background-color: #334155;
+  transform: translateY(-3px);
+}
+
+.btn-tertiary {
+  background-color: transparent;
+  color: #94a3b8;
+  border: 1px dashed #334155;
+}
+.btn-tertiary:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* --- INTERACTIVE PROFILE CANVAS FRAME --- */
+.image-frame-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.webflow-profile-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 20px;
+  filter: grayscale(20%);
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image-frame-wrapper:hover .webflow-profile-img {
+  filter: grayscale(0%);
+  transform: scale(1.02) rotate(1deg);
+}
+
+.frame-decoration-glow {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00ffcc, #3b82f6);
+  border-radius: 20px;
+  z-index: 1;
+  opacity: 0.15;
+  transition: all 0.4s ease;
+}
+
+.image-frame-wrapper:hover .frame-decoration-glow {
+  opacity: 0.3;
+  top: 20px;
+  left: 20px;
+}
+
+/* --- THE TIMELINE ARRAYS --- */
+.webflow-experience-section {
+  padding-top: 60px;
+}
+
+.section-header-block {
+  margin-bottom: 50px;
+}
+
+.section-counter-tag {
+  font-family: monospace;
+  color: #00ffcc;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.section-main-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.webflow-timeline-stack {
+  position: relative;
+  padding-left: 10px;
+}
+
+/* Smooth vertical line tracking */
+.webflow-timeline-stack::before {
+  content: '';
+  position: absolute;
+  left: 160px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, #334155, rgba(51, 65, 85, 0.1));
+}
+
+.wf-experience-row {
+  display: grid;
+  grid-template-columns: 140px 40px 1fr;
+  margin-bottom: 45px;
+  transition: all 0.3s ease;
+}
+
+.wf-time-col {
+  text-align: right;
+  padding-top: 4px;
+}
+
+.wf-date-label {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.wf-dot-col {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.wf-timeline-node {
+  width: 10px;
+  height: 10px;
+  background-color: #1e293b;
+  border: 2px solid #64748b;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.wf-content-col {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  padding: 24px 30px;
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Row Hover States triggers lively visual change */
+.wf-experience-row:hover .wf-content-col {
+  background-color: #131a26;
+  border-color: rgba(0, 255, 204, 0.3);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wf-experience-row:hover .wf-timeline-node {
+  background-color: #00ffcc;
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+.wf-experience-row:hover .wf-date-label {
+  color: #00ffcc;
+}
+
+.wf-role-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.wf-company-subtext {
+  font-size: 14px;
+  color: #00ffcc;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  font-family: monospace;
+}
+
+.wf-details-body {
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Keyframes Animations */
+@keyframes pulse-glow {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.5); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 255, 204, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+
+/* Responsive Scaling down for smaller displays */
+@media (max-width: 768px) {
+  .webflow-hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .status-pill { justify-content: center; }
+  .webflow-btn-group { justify-content: center; }
+  .webflow-title { font-size: 44px; }
+  .webflow-timeline-stack::before { display: none; }
+  .wf-experience-row { grid-template-columns: 1fr; gap: 15px; text-align: left; }
+  .wf-time-col { text-align: left; }
+  .wf-dot-col { display: none; }
+}
+
+/* --- NAVIGATION & DROPDOWN CSS --- */
+.nav-item {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #111827;
+  min-width: 180px;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 8px 0;
+  z-index: 100;
+  margin-top: 10px;
+}
+
+/* ADD THIS NEW BLOCK RIGHT BELOW IT */
+/* This creates an invisible bridge so your mouse doesn't fall off the hover state */
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-color: transparent;
+}
+
+/* Visible ONLY on hover */
+.nav-dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.dropdown-link {
+  color: #94a3b8;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background-color: #1f2937;
+  color: #00ffcc;
+  padding-left: 24px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

@@ -1,0 +1,208 @@
+/* --- BASE INHERITANCE --- */
+.projects-container {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  padding-bottom: 60px;
+}
+
+.projects-main-title {
+  color: #ffffff;
+  font-weight: 700;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* --- THE LIVE TOOL SECTION --- */
+.live-tool-wrapper {
+  background-color: #111827 !important; /* Premium dark background */
+  border: 1px solid #1f2937 !important;
+}
+
+.tool-banner {
+  background: linear-gradient(135deg, #1e293b 0%, #0b0f19 100%);
+  border-bottom: 1px solid #1f2937;
+}
+
+.tool-body {
+  background-color: transparent;
+}
+
+.text-light-blue { 
+  color: #94a3b8 !important; 
+}
+
+.form-label-text {
+  color: #cbd5e1;
+}
+
+/* --- BADGES & INDICATORS --- */
+.live-indicator {
+  background-color: rgba(0, 255, 204, 0.1);
+  color: #00ffcc;
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.selected-counter {
+  font-size: 12px;
+  background-color: #1e293b;
+  color: #00ffcc;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: 1px solid #334155;
+}
+
+/* --- INTERACTIVE GRID & CARDS --- */
+.company-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #1f2937;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #0b0f19; /* Deepest dark for inner well */
+}
+
+/* Custom Scrollbar for the grid */
+.company-selection-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.company-selection-grid::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+.company-selection-grid::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+.company-check-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  background-color: #111827;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.company-check-card:hover { 
+  border-color: rgba(0, 255, 204, 0.4); 
+  background-color: #131a26;
+}
+
+.active-card {
+  background-color: rgba(0, 255, 204, 0.05) !important;
+  border-color: #00ffcc !important;
+}
+
+.custom-checkbox {
+  margin-right: 12px;
+  width: 16px;
+  height: 16px;
+  accent-color: #00ffcc;
+  cursor: pointer;
+}
+
+.check-text-label {
+  font-size: 13.5px;
+  color: #f1f5f9;
+  text-align: left;
+}
+
+.company-dot-name { 
+  color: #64748b; 
+}
+
+/* --- FORMS & INPUTS --- */
+.custom-textarea {
+  background-color: #0b0f19 !important;
+  border-radius: 8px;
+  border: 1px solid #1f2937 !important;
+  color: #f1f5f9 !important;
+  font-size: 14px;
+  padding: 14px;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.custom-textarea::placeholder {
+  color: #475569;
+}
+
+.custom-textarea:focus {
+  border-color: #00ffcc !important;
+  box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.1) !important;
+  outline: none;
+}
+
+/* --- ACTION BUTTON --- */
+.generate-action-btn {
+  background: linear-gradient(135deg, #00ffcc 0%, #3b82f6 100%);
+  color: #0b0f19 !important; /* Dark text for contrast against neon */
+  border: none;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.generate-action-btn:hover:not(:disabled) { 
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 255, 204, 0.25);
+  color: #0b0f19 !important;
+}
+
+.generate-action-btn:disabled {
+  background: #1e293b;
+  color: #94a3b8 !important;
+  cursor: not-allowed;
+}
+
+/* --- ALERTS --- */
+.custom-error-alert {
+  background-color: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #fca5a5;
+}
+
+/* --- STATIC REFERENCE CARDS --- */
+.reference-project-card {
+  background-color: #111827 !important;
+  border: 1px solid #1f2937 !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reference-project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 204, 0.3) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.static-domain-badge {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.card-title-text {
+  color: #ffffff;
+}
+
+.card-description-text {
+  line-height: 1.6;
+  text-align: left;
+  color: #94a3b8 !important;
+}
+
+@media (max-width: 768px) {
+  .company-selection-grid { grid-template-columns: 1fr; }
+}
