@@ -6,6 +6,7 @@ function Projects() {
   const [companies, setCompanies] = useState([]);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [feedback, setFeedback] = useState('');
+  const [email, setEmail] = useState(''); // NEW: Email delivery state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -23,6 +24,7 @@ function Projects() {
     }
   ];
 
+  // Fetch the dynamic companies list from the backend (which pulls from Drive)
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/companies`)
       .then((res) => {
@@ -43,7 +45,7 @@ function Projects() {
 
   const handleGenerateReport = async () => {
     if (selectedCompanies.length === 0) {
-      alert("Please select at least one corporate equity card.");
+      alert("Please select at least one enterprise entity.");
       return;
     }
     setLoading(true);
@@ -55,20 +57,31 @@ function Projects() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           companies: selectedCompanies,
-          custom_feedback: feedback
+          custom_feedback: feedback,
+          email: email.trim() // Pass the email to the backend
         })
       });
 
-      if (!response.ok) throw new Error("The backend cluster failed to serialize your word artifact.");
+      if (!response.ok) throw new Error("The backend cluster failed to process the request.");
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'QuantAgent_Custom_Report.docx');
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
+      // Check if the backend sent JSON (Email Success) or a File (Direct Download)
+      const contentType = response.headers.get("content-type");
+      
+      if (contentType && contentType.includes("application/json")) {
+        // Email routing success
+        const data = await response.json();
+        alert(`✅ ${data.message}`);
+      } else {
+        // Standard browser download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'NIFTY_Custom_Screening_Report.docx');
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -78,17 +91,17 @@ function Projects() {
 
   return (
     <div className="projects-container pt-5" id="portfolio">
-      <h3 className="projects-main-title mb-4 pb-3">🚀 Engineering Workshops & Portfolios</h3>
+      <h3 className="projects-main-title mb-4 pb-3">🚀 AI Strategy & Engineering Portfolios</h3>
 
       {/* 🛠️ LIVE INTERACTIVE APPLICATION INTERFACE BLOCK */}
       <div className="live-tool-wrapper card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
         <div className="tool-banner p-4">
           <div className="d-flex align-items-center gap-2">
             <span className="badge live-indicator">LIVE SYSTEM TOOL</span>
-            <h4 className="m-0 fw-bold text-white">QuantAgent Portfolio Report Compiler</h4>
+            <h4 className="m-0 fw-bold text-white">GenAI Enterprise Transformation Screener</h4>
           </div>
           <p className="m-0 mt-2 text-light-blue small">
-            Select listed entities and stream direct operational configurations down into custom MS Word decks via Gemini AI.
+            Select industry leaders to dynamically generate automated AI readiness reports via Gemini.
           </p>
         </div>
 
@@ -96,13 +109,13 @@ function Projects() {
           {error && (
             <div className="alert custom-error-alert d-flex align-items-center gap-2 small" role="alert">
               <span>⚠️</span>
-              <div><strong>Gateway Alert:</strong> {error} (Confirm <code>server.py</code> is running locally).</div>
+              <div><strong>Gateway Alert:</strong> {error}</div>
             </div>
           )}
 
           <div className="mb-4">
             <div className="d-flex justify-content-between align-items-center mb-2">
-              <label className="fw-semibold form-label-text small">📁 Check Target Securities for Evaluation Grid:</label>
+              <label className="fw-semibold form-label-text small">📁 Target Enterprises for Evaluation:</label>
               <span className="selected-counter">Selected: {selectedCompanies.length}</span>
             </div>
 
@@ -128,26 +141,58 @@ function Projects() {
           </div>
 
           <div className="mb-4">
-            <label className="fw-semibold form-label-text small mb-2">🧠 Custom Strategic Guidelines for Gemini AI:</label>
+            <label className="fw-semibold form-label-text small mb-2">🧠 Strategic Guidelines for Gemini AI Agent:</label>
             <textarea
               rows="3"
-              placeholder="e.g., Run margin risk matrices, flag inflation vulnerabilities, and isolate any high overhead concerns."
+              placeholder="e.g., Flag legacy infrastructure bottlenecks, outline machine learning ROI timelines, and assess data privacy risks."
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
               className="form-control custom-textarea"
             />
           </div>
 
-          <button onClick={handleGenerateReport} disabled={loading} className="btn w-100 generate-action-btn py-3">
+          {/* NEW: Email Routing Field */}
+          <div className="mb-4">
+            <label className="fw-semibold form-label-text small mb-2">📧 Delivery Routing (Optional):</label>
+            <input
+              type="email"
+              placeholder="Enter email to dispatch report directly, or leave blank to download locally."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-control custom-textarea py-2"
+              style={{ minHeight: '45px' }}
+            />
+          </div>
+
+          <button onClick={handleGenerateReport} disabled={loading} className="btn w-100 generate-action-btn py-3 mb-3">
             {loading ? (
               <div className="d-flex justify-content-center align-items-center gap-2">
                 <span className="spinner-border spinner-border-sm" role="status"></span>
                 <span>Assembling Agent Assets & Compiling File...</span>
               </div>
             ) : (
-              <span>📥 Compile Portfolio Rationale & Download Report</span>
+              <span>{email.includes('@') ? '📤 Compile & Dispatch to Email' : '📥 Compile Portfolio Rationale & Download Report'}</span>
             )}
           </button>
+
+          {/* Direct Google Drive Excel Download Button */}
+          <a
+            href="https://drive.google.com/uc?export=download&id=1WQljak5wURGcg5izR_jPFfMwcqza97jx"
+            className="btn w-100 py-3"
+            style={{
+              backgroundColor: '#1e293b',
+              color: '#00ffcc',
+              border: '1px dashed #334155',
+              fontWeight: '600',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              display: 'inline-block',
+              textAlign: 'center'
+            }}
+          >
+            📊 Download Complete Financial Matrix (Excel)
+          </a>
+
         </div>
       </div>
 

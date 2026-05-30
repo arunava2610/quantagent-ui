@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './About.css';
 import myPhoto from '../assets/arunava-profile.jpg';
-import myCV from '../assets/Arunava Chakraborty_CV.pdf';
+import myCV from '../assets/Arunava_Chakraborty_CV.pdf';
 
 function About() {
+    const [copySuccess, setCopySuccess] = useState(false);
+
+    const handleCopyEmail = (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText('arunava.chakraborty.2024@iimu.ac.in');
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000); // Resets the button text after 2 seconds
+    };
+
     const recentExperiences = [
         {
-            role: "Consultant — Business Consulting",
+            role: "Consultant — Business Consulting (FSI Domain)",
             company: "Infosys",
-            timeline: "Incoming May 2026",
-            desc: "Spearheading enterprise-scale digital transformation initiatives, cloud architecture transitions, and macro analytics system frameworks."
+            timeline: "Incoming July 2026",
+            desc: "Positioned to drive enterprise-scale digital transformation, AI adoption strategies, and process optimization frameworks for top-tier financial services clients."
         },
         {
             role: "Data Analyst Intern",
             company: "Pretium Enterprise Services",
-            timeline: "Summer Internship",
-            desc: "Architected a dual-stage machine learning predictive engine tracking automated email intelligence loops and logistic fleet asset arrays."
-        },
-        {
-            role: "Rental Operations Intern",
-            company: "Progress Residential",
-            timeline: "June 2025",
-            desc: "Engineered multi-market real estate risk models, asset optimization sheets, and data-driven corporate evaluation metrics."
+            timeline: "May 2025 — June 2025",
+            desc: "Architected a dual-stage machine learning predictive engine to optimize operations, demonstrating tangible ROI through advanced data analytics and intelligent automation."
         }
     ];
 
@@ -29,14 +32,14 @@ function About() {
         {
             role: "IT Analyst (ITA)",
             company: "Tata Consultancy Services (TCS)",
-            timeline: "2024",
-            desc: "Promoted to drive complex technical problem-solving and manage high-impact enterprise systems following a strong trajectory of continuous learning and delivery."
+            timeline: "2023 — 2024",
+            desc: "Led technical delivery and complex problem-solving for high-impact enterprise systems, bridging the gap between business requirements and scalable IT architectures."
         },
         {
-            role: "Java Developer",
+            role: "Systems Engineer",
             company: "Tata Consultancy Services (TCS)",
-            timeline: "2020 — 2024",
-            desc: "Honed foundational technical skills by contributing to various high-impact enterprise projects, building robust backend architectures across a 3.5-year tenure."
+            timeline: "2020 — 2023",
+            desc: "Engineered robust backend solutions and contributed to enterprise-grade applications, building a strong foundation in system architecture and agile delivery methodologies."
         }
     ];
 
@@ -73,19 +76,22 @@ function About() {
                     <h1 className="webflow-title">
                         Hi, I'm <span className="gradient-text">Arunava Chakraborty</span>.
                     </h1>
+                    
+                    {/* Shifted focus to AI and Strategic Architecture */}
                     <h2 className="webflow-subtitle">
-                        Bridging Quant Engineering & Corporate Financial Architectures.
+                        Driving Enterprise AI & Digital Transformation Strategy.
                     </h2>
                     <p className="webflow-bio">
-                        An engineer turned finance professional (MBA, IIM Udaipur, Class of 2026). I build high-performance
-                        full-stack tools, scale algorithmic model screeners, and optimize financial decision
-                        pipelines with data science.
+                        An engineer turned strategic consultant (MBA, IIM Udaipur, Class of 2026). I specialize in leveraging Applied AI, data-driven frameworks, and cloud-native architectures to solve complex enterprise challenges and scale operational efficiency within the FSI sector.
                     </p>
 
                     <div className="webflow-btn-group">
-                        <a href="mailto:your.email@example.com" className="wf-btn btn-primary">
-                            Let's Talk <span>→</span>
-                        </a>
+                        {/* Interactive Copy-to-Clipboard Button */}
+                        <button onClick={handleCopyEmail} className="wf-btn btn-primary tooltip-container">
+                            {copySuccess ? 'Copied to Clipboard! ✓' : "Let's Talk →"}
+                            <span className="tooltip-text">arunava.chakraborty.2024@iimu.ac.in</span>
+                        </button>
+
                         <a href="https://www.linkedin.com/in/arunava-chakraborty-iimu/" target="_blank" rel="noreferrer" className="wf-btn btn-secondary">
                             LinkedIn
                         </a>

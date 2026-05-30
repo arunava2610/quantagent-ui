@@ -88,6 +88,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+}
+
+/* Normalize button specifically for the Let's Talk tag */
+button.btn-primary {
+  border: none;
+  font-family: inherit;
+  outline: none;
 }
 
 .btn-primary {
@@ -118,6 +126,50 @@
 .btn-tertiary:hover {
   color: #ffffff;
   border-color: #ffffff;
+}
+
+/* --- INTERACTIVE TOOLTIP CSS FOR EMAIL COPY --- */
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #111827;
+  color: #00ffcc;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #1f2937;
+  position: absolute;
+  z-index: 10;
+  bottom: 135%; /* Pops up directly above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Adds a small pointer triangle below the tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* --- INTERACTIVE PROFILE CANVAS FRAME --- */
@@ -341,7 +393,6 @@
   margin-top: 10px;
 }
 
-/* ADD THIS NEW BLOCK RIGHT BELOW IT */
 /* This creates an invisible bridge so your mouse doesn't fall off the hover state */
 .dropdown-content::before {
   content: '';
