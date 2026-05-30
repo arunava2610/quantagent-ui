@@ -24,7 +24,7 @@ function Projects() {
   ];
 
   useEffect(() => {
-    fetch('https://quantagent-nifty50-forensic-screener.onrender.com/api/companies')
+    fetch(`${import.meta.env.VITE_API_URL}/api/companies`)
       .then((res) => {
         if (!res.ok) throw new Error("Could not link to the report engine gateway.");
         return res.json();
@@ -50,7 +50,7 @@ function Projects() {
     setError('');
 
     try {
-      const response = await fetch('https://quantagent-nifty50-forensic-screener.onrender.com/api/generate-report', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
