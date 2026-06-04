@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import About from './components/About';
 import Projects from './components/Projects'; // Now officially uncommented and active!
+import SupplyChainAgent from './components/SupplyChainAgent';
+
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
                 <div className="dropdown-content">
                   {/* React Router Link prevents page reloads and routes instantly */}
                   <Link to="/projects" className="dropdown-link">Nifty 50 Report</Link>
+                  <Link to="/SupplyChainAgent" className="dropdown-link">Agentic Fulfiment AI</Link>
                 </div>
               </div>
             </div>
@@ -61,6 +64,8 @@ function App() {
             
             {/* When URL is "/projects", show your work */}
             <Route path="/projects" element={<Projects />} />
+
+             <Route path="/SupplyChainAgent" element={<SupplyChainAgent />} />
           </Routes>
 
           <footer className="text-center small pt-5 mt-5" style={{ borderTop: '1px solid #1e293b', color: '#475569' }}>

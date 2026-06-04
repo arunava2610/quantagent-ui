@@ -1,0 +1,98 @@
+/* --- BASE SC INHERITANCE --- */
+.sc-container {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  padding-bottom: 60px;
+}
+
+/* --- SC LIVE TOOL SECTION --- */
+.sc-live-tool-wrapper {
+  background-color: #0b0f19 !important; /* Forces dark mode over Bootstrap .card */
+  border: 1px solid #1f2937 !important;
+}
+
+.sc-tool-banner {
+  background: linear-gradient(135deg, #1e293b 0%, #0b0f19 100%);
+  border-bottom: 1px solid #1f2937;
+}
+
+.sc-tool-body {
+  background-color: transparent !important;
+}
+
+.sc-text-light-blue { 
+  color: #94a3b8 !important; 
+}
+
+/* --- BADGES & BUTTONS --- */
+.sc-live-indicator {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+}
+
+.sc-sync-btn {
+  border: 1px solid #f59e0b;
+  color: #f59e0b;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.sc-sync-btn:hover:not(:disabled) {
+  background-color: #f59e0b !important;
+  color: #000 !important;
+}
+
+.sc-sync-btn:disabled {
+  border-color: transparent !important;
+  color: #94a3b8 !important;
+  background: #1e293b !important;
+}
+
+/* --- TERMINAL WINDOW --- */
+.sc-agent-terminal {
+  background-color: #050505 !important;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  min-height: 380px;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.sc-logs-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* --- CHAT PANEL --- */
+.sc-chat-panel {
+  background-color: #0f172a !important;
+  border: 1px solid #1e293b !important;
+  min-height: 380px;
+}
+
+/* --- CUSTOM SCROLLBARS --- */
+.sc-logs-container::-webkit-scrollbar,
+.sc-chat-history::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sc-logs-container::-webkit-scrollbar-track,
+.sc-chat-history::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sc-logs-container::-webkit-scrollbar-thumb,
+.sc-chat-history::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
