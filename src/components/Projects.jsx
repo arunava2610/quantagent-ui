@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css';
+import IntroBanner from "./IntroBanner";
 
 function Projects() {
   // Report Downloader Tool State Matrix
@@ -90,7 +91,11 @@ function Projects() {
   };
 
   return (
+  //    <div className="container py-4">
+  //   <IntroBanner />   
+  // </div>
     <div className="projects-container pt-5" id="portfolio">
+       <IntroBanner />  
       <h3 className="projects-main-title mb-4 pb-3">🚀 AI Strategy & Engineering Portfolios</h3>
 
       {/* 🛠️ LIVE INTERACTIVE APPLICATION INTERFACE BLOCK */}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './SupplyChainAgent.css';
+import IntroBanner from "./IntroBanner SCM";
 
 const CONFIG_TIMER = 10; 
 
@@ -203,6 +204,7 @@ function SupplyChainAgent() {
 
   return (
     <div className="sc-container pt-4" id="supply-chain">
+       <IntroBanner />  
       <div className="sc-live-tool-wrapper card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
         <div className="sc-tool-banner p-4">
           <div className="d-flex align-items-center gap-2">
